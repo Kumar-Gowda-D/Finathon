@@ -1,0 +1,112 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header Styling */
+  header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  header p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Navigation Styling */
+  nav {
+    background: #333;
+    color: white;
+    padding: 1rem;
+  }
+  
+  .story-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .story-list li {
+    margin: 0.5rem;
+  }
+  
+  .story-list a {
+    text-decoration: none;
+    color: #4CAF50;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .story-list a:hover {
+    background: #4CAF50;
+    color: white;
+  }
+  
+  /* Main Content Styling */
+  main {
+    padding: 2rem;
+  }
+  
+  article {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  article h2 {
+    color: #4CAF50;
+    margin-top: 0;
+  }
+  
+  article p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Footer Styling */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .story-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .story-list a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

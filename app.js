@@ -8,6 +8,10 @@ const ejsMate = require("ejs-mate");
 const Health = require("./models/health.js");
 const Family = require("./models/family.js");
 const Agri = require("./models/agri.js");
+const http = require('http');
+const socketIo = require('socket.io');
+const server = http.createServer(app);
+const io = socketIo(server); 
 
 app.set("view engine","ejs");
 app.use(express.urlencoded({extended:true}));
@@ -23,8 +27,29 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
-app.get("/home",(req,res)=>{
-  res.render("Lists/home.ejs");
+app.get("/home", async(req,res)=>{
+  const healthList = await Health.find();
+  const familyList = await Family.find();
+  const agriList = await Agri.find();
+
+  let healthTotal = 0;
+  let familyTotal = 0;
+  let agriTotal = 0;
+  let grandTotal = 0;
+
+  healthList.forEach(item => {
+    healthTotal += Number(item.amount);
+  });
+
+  familyList.forEach(item => {
+    familyTotal += Number(item.amount);
+  });
+
+  agriList.forEach(item => {
+    agriTotal += Number(item.amount);
+  });
+grandTotal = healthTotal+familyTotal+agriTotal;
+  res.render("Lists/home.ejs" ,{grandTotal});
 });
 
 const calculateSIP = (monthlyInvestment, interestRate, timePeriod) => {
@@ -211,6 +236,53 @@ app.delete("/home/health/:id",async (req,res) =>{
 app.get("/home/service",(req,res)=>{
   res.render("Lists/service");
 });
+
+let salesData = [65, 59, 80, 81, 56]; 
+
+
+
+app.get('/data', (req, res) => {
+  res.json({ 
+    labels: ['January', 'February', 'March', 'April', 'May'], 
+    values: salesData
+  });
+});
+
+app.post('/updateSales', express.json(), (req, res) => {
+  salesData = req.body.salesData; 
+  io.emit('updateData', { labels: ['January', 'February', 'March', 'April', 'May'], values: salesData });
+  res.status(200).send('Data updated');
+});
+
+app.get('/hello', async (req, res) => {
+
+  const healthList = await Health.find();
+  const familyList = await Family.find();
+  const agriList = await Agri.find();
+
+  let healthTotal = 0;
+  let familyTotal = 0;
+  let agriTotal = 0;
+
+  healthList.forEach(item => {
+    healthTotal += Number(item.amount);
+  });
+
+  familyList.forEach(item => {
+    familyTotal += Number(item.amount);
+  });
+
+  agriList.forEach(item => {
+    agriTotal += Number(item.amount);
+  });
+
+  res.render('Lists/graph', {
+    healthTotal,
+    familyTotal,
+    agriTotal
+  });
+});
+
 app.listen(3000,(req,res)=>{
     console.log("Listening to the port 3000");
 });

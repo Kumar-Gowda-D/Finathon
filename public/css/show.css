@@ -1,0 +1,110 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    width: 90%;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+/* Details List */
+.details-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.details-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details-list li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.details-list li strong {
+    color: #555;
+}
+
+/* Actions */
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Edit Button */
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn:last-child {
+        margin-bottom: 0;
+    }
+}

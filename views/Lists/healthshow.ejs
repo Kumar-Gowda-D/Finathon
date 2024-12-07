@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Details</title>
+    <link rel="stylesheet" href="/css/show.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Details On Health Expenditure</h1>
+
+        <div class="details-card">
+            <ul class="details-list">
+                <li><strong>Date:</strong> <%= listing.date %></li>
+                <li><strong>Spent On:</strong> <%= listing.spent %></li>
+                <li><strong>Amount:</strong> ₹<%= listing.amount.toLocaleString("en-IN") %></li>
+            </ul>
+
+            <div class="actions">
+                <a href="/home/health/<%=listing._id%>/edit" class="btn edit-btn">Edit</a>
+                <form method="post" action="/home/health/<%=listing._id%>?_method=DELETE" class="delete-form">
+                    <button type="submit" class="btn delete-btn">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

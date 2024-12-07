@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Spending Tracker</title>
+    <link rel="stylesheet" href="/css/new.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Daily Spent On Agriculture</h2>
+        <form method="POST" action="/home/agri" class="form">
+            <div class="form-group">
+                <label for="dateInput">Date</label>
+                <input name="Listing[date]" placeholder="Enter date" type="text" id="dateInput" required>
+            </div>
+
+            <div class="form-group">
+                <label for="spentInput">Description</label>
+                <textarea name="Listing[spent]" placeholder="Enter description" id="spentInput" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="amountInput">Amount (₹)</label>
+                <input name="Listing[amount]" placeholder="Enter price" type="number" id="amountInput" required>
+            </div>
+
+            <button type="submit" class="btn">Add</button>
+        </form>
+    </div>
+
+    <script>
+        const today = new Date();
+        const formattedDate = today.toISOString().split("T")[0]; 
+        document.getElementById('dateInput').value = formattedDate;
+    </script>
+</body>
+</html>
